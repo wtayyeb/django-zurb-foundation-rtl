@@ -7,12 +7,12 @@ ROOT_DIR = os.path.dirname(__file__)
 SOURCE_DIR = os.path.join(ROOT_DIR)
 
 setup(
-    name="django-zurb-foundation",
+    name="django-zurb-foundation-rtl",
     version="5.5.0",
-    description="Django Zurb Foundation package.",
-    author="Amar Šahinović",
-    author_email="amar@sahinovic.com",
-    url="https://github.com/amarsahinovic/django-zurb-foundation",
+    description="Django Zurb Foundation package + RTL Support",
+    author="W. Tayyeb",
+    author_email="w.tayyeb@gmail.com",
+    url="https://github.com/wtayyeb/django-zurb-foundation-rtl",
     license='BSD License', 
     packages=find_packages(),
     include_package_data=True,

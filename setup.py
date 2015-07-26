@@ -8,7 +8,7 @@ SOURCE_DIR = os.path.join(ROOT_DIR)
 
 setup(
     name="django-zurb-foundation-rtl",
-    version="5.5.0",
+    version="5.5.2",
     description="Django Zurb Foundation package + RTL Support",
     author="W. Tayyeb",
     author_email="w.tayyeb@gmail.com",

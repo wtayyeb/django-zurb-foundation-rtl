@@ -1,0 +1,19 @@
+/* Foundation by ZURB
+ * Note: foundation global css not included. So  
+ * global.css must requested once on every page.
+ */
+.inline-list {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 1.0625rem;
+  margin-right: -1.375rem;
+  margin-left: 0;
+  overflow: hidden;
+  padding: 0; }
+  .inline-list > li {
+    display: block;
+    float: right;
+    list-style: none;
+    margin-right: 1.375rem; }
+    .inline-list > li > * {
+      display: block; }

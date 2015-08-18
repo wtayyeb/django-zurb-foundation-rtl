@@ -1,0 +1,61 @@
+/* Foundation by ZURB
+ * Note: foundation global css not included. So  
+ * global.css must requested once on every page.
+ */
+/* Progress Bar */
+.progress {
+  background-color: #F6F6F6;
+  border: 1px solid white;
+  height: 1.5625rem;
+  margin-bottom: 0.625rem;
+  padding: 0.125rem; }
+  .progress .meter {
+    background: #008CBA;
+    display: block;
+    height: 100%;
+    float: left;
+    width: 0%; }
+    .progress .meter.secondary {
+      background: #e7e7e7;
+      display: block;
+      height: 100%;
+      float: left;
+      width: 0%; }
+    .progress .meter.success {
+      background: #43AC6A;
+      display: block;
+      height: 100%;
+      float: left;
+      width: 0%; }
+    .progress .meter.alert {
+      background: #f04124;
+      display: block;
+      height: 100%;
+      float: left;
+      width: 0%; }
+  .progress.secondary .meter {
+    background: #e7e7e7;
+    display: block;
+    height: 100%;
+    float: left;
+    width: 0%; }
+  .progress.success .meter {
+    background: #43AC6A;
+    display: block;
+    height: 100%;
+    float: left;
+    width: 0%; }
+  .progress.alert .meter {
+    background: #f04124;
+    display: block;
+    height: 100%;
+    float: left;
+    width: 0%; }
+  .progress.radius {
+    border-radius: 3px; }
+    .progress.radius .meter {
+      border-radius: 2px; }
+  .progress.round {
+    border-radius: 1000px; }
+    .progress.round .meter {
+      border-radius: 999px; }

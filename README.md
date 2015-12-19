@@ -1,7 +1,7 @@
-django-zurb-foundation 5.5.2 + rtl specific files
+django-zurb-foundation 6.0.6 + rtl specific files
 ============================
 
-Django Zurb Foundation 5 package.
+Django Zurb Foundation 6 package.
 
 Version of this package is equal to the version of Zurb Foundation it provides.
 

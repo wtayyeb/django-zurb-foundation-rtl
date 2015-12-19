@@ -8,46 +8,46 @@
 $text-direction: rtl;
 
 // Sass utilities
-@import 'util/util';
+@import 'foundation/scss/util/util';
 
 // Global variables and styles
-@import 'global';
+@import 'foundation/scss/global';
 
 // Components
-@import 'grid/grid';
-@import 'typography/typography';
-@import 'forms/forms';
-@import 'components/visibility';
-@import 'components/float';
-@import 'components/button';
-@import 'components/button-group';
-@import 'components/accordion-menu';
-@import 'components/accordion';
-@import 'components/badge';
-@import 'components/breadcrumbs';
-@import 'components/callout';
-@import 'components/close-button';
-@import 'components/drilldown';
-@import 'components/dropdown-menu';
-@import 'components/dropdown';
-@import 'components/flex-video';
-@import 'components/label';
-@import 'components/media-object';
-@import 'components/menu';
-@import 'components/off-canvas';
-@import 'components/orbit';
-@import 'components/pagination';
-@import 'components/progress-bar';
-@import 'components/reveal';
-@import 'components/slider';
-@import 'components/sticky';
-@import 'components/switch';
-@import 'components/table';
-@import 'components/tabs';
-@import 'components/title-bar';
-@import 'components/top-bar';
-@import 'components/thumbnail';
-@import 'components/tooltip';
+@import 'foundation/scss/grid/grid';
+@import 'foundation/scss/typography/typography';
+@import 'foundation/scss/forms/forms';
+@import 'foundation/scss/components/visibility';
+@import 'foundation/scss/components/float';
+@import 'foundation/scss/components/button';
+@import 'foundation/scss/components/button-group';
+@import 'foundation/scss/components/accordion-menu';
+@import 'foundation/scss/components/accordion';
+@import 'foundation/scss/components/badge';
+@import 'foundation/scss/components/breadcrumbs';
+@import 'foundation/scss/components/callout';
+@import 'foundation/scss/components/close-button';
+@import 'foundation/scss/components/drilldown';
+@import 'foundation/scss/components/dropdown-menu';
+@import 'foundation/scss/components/dropdown';
+@import 'foundation/scss/components/flex-video';
+@import 'foundation/scss/components/label';
+@import 'foundation/scss/components/media-object';
+@import 'foundation/scss/components/menu';
+@import 'foundation/scss/components/off-canvas';
+@import 'foundation/scss/components/orbit';
+@import 'foundation/scss/components/pagination';
+@import 'foundation/scss/components/progress-bar';
+@import 'foundation/scss/components/reveal';
+@import 'foundation/scss/components/slider';
+@import 'foundation/scss/components/sticky';
+@import 'foundation/scss/components/switch';
+@import 'foundation/scss/components/table';
+@import 'foundation/scss/components/tabs';
+@import 'foundation/scss/components/title-bar';
+@import 'foundation/scss/components/top-bar';
+@import 'foundation/scss/components/thumbnail';
+@import 'foundation/scss/components/tooltip';
 
 @mixin foundation-everything {
   @include foundation-global-styles;

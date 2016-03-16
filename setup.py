@@ -8,7 +8,7 @@ SOURCE_DIR = os.path.join(ROOT_DIR)
 
 setup(
     name="static-foundation",
-    version="6.1",
+    version="6.1.1",
     description="Django Zurb Foundation package",
     author="W. Tayyeb",
     author_email="w.tayyeb@gmail.com",

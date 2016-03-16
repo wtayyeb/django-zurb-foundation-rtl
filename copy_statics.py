@@ -5,9 +5,11 @@ Created on Jan 1, 2016
 @author: Wasim
 '''
 
-from glob import glob
-from pprint import pprint
-import shutil, errno, os
+import errno
+import glob
+import os
+import pprint
+import shutil
 
 
 def main():
@@ -15,14 +17,14 @@ def main():
     df = r'foundation/static/foundation/'
 
     pathes = (
-        (glob(zf + 'scss'), df + 'scss'),
+        (glob.glob(zf + 'scss'), df + 'scss'),
 
-        (glob(zf + 'js'), df + 'js/foundation'),
+        (glob.glob(zf + 'js'), df + 'js/foundation'),
         (zf + 'dist/foundation.css', df + 'css'),
         (zf + 'dist/foundation.js', df + 'js'),
         (zf + 'dist/foundation.min.js', df + 'js'),
     )
-    pprint(pathes)
+    pprint.pprint(pathes)
     for src, dst in pathes:
         if isinstance(src, list):
             try:
@@ -47,7 +49,7 @@ def cp(src, dst):
     try:
         shutil.copytree(src, dst)
 
-    except OSError as exc: # python >2.5
+    except OSError as exc:  # python >2.5
         if exc.errno == errno.ENOTDIR:
             shutil.copy(src, dst)
         else:

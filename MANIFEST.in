@@ -1,3 +1,2 @@
 include README.md
 recursive-include foundation/static *
-recursive-include foundation/templates *

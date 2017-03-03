@@ -1,14 +1,13 @@
 # -*- coding:utf-8 -*-
-'''
+"""
 Created on Jan 1, 2016
 
 @author: Wasim
-'''
+"""
 
 import errno
 import glob
 import os
-import pprint
 import shutil
 
 
@@ -18,14 +17,15 @@ def main():
 
     pathes = (
         (glob.glob(zf + 'scss'), df + 'scss'),
+        (glob.glob(zf + '_vendor'), df + '_vendor'),
 
-        (glob.glob(zf + 'js'), df + 'js/foundation'),
-        (zf + 'dist/foundation.css', df + 'css'),
-        (zf + 'dist/foundation.js', df + 'js'),
-        (zf + 'dist/foundation.min.js', df + 'js'),
+        (glob.glob(zf + 'js'), df + 'js/foundation-es6'),
+        (zf + 'dist/css/foundation.css', df + 'css'),
+        (zf + 'dist/js/foundation.js', df + 'js'),
     )
-    pprint.pprint(pathes)
     for src, dst in pathes:
+        print('copy %s to %s' % (src, dst))
+
         if isinstance(src, list):
             try:
                 shutil.rmtree(dst)
@@ -49,7 +49,7 @@ def cp(src, dst):
     try:
         shutil.copytree(src, dst)
 
-    except OSError as exc:  # python >2.5
+    except OSError as exc:
         if exc.errno == errno.ENOTDIR:
             shutil.copy(src, dst)
         else:
@@ -58,4 +58,3 @@ def cp(src, dst):
 
 if __name__ == '__main__':
     main()
-

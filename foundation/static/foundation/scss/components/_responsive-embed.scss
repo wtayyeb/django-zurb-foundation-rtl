@@ -55,13 +55,3 @@ $responsive-embed-ratios: (
     }
   }
 }
-
-@mixin foundation-flex-video {
-  @warn 'This mixin is being replaced by foundation-responsive-embed(). foundation-flex-video() will be removed in Foundation 6.4.';
-  @include foundation-responsive-embed;
-}
-
-@mixin flex-video($ratio: $responsive-embed-ratio) {
-  @warn 'This mixin is being replaced by responsive-embed(). flex-video() will be removed in Foundation 6.4.';
-  @include responsive-embed;
-}

@@ -22,6 +22,7 @@ def main():
         (glob.glob(zf + 'js'), df + 'js.es6'),
         (glob.glob(zf + 'dist/css'), df + 'css'),
         (glob.glob(zf + 'dist/js'), df + 'js'),
+        (zf + 'LICENSE', df),
     )
     for src, dst in pathes:
         print('copy %s to %s' % (src, dst))

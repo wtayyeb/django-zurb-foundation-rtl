@@ -19,9 +19,9 @@ def main():
         (glob.glob(zf + 'scss'), df + 'scss'),
         (glob.glob(zf + '_vendor'), df + '_vendor'),
 
-        (glob.glob(zf + 'js'), df + 'js/foundation-es6'),
-        (zf + 'dist/css/foundation.css', df + 'css'),
-        (zf + 'dist/js/foundation.js', df + 'js'),
+        (glob.glob(zf + 'js'), df + 'js.es6'),
+        (glob.glob(zf + 'dist/css'), df + 'css'),
+        (glob.glob(zf + 'dist/js'), df + 'js'),
     )
     for src, dst in pathes:
         print('copy %s to %s' % (src, dst))

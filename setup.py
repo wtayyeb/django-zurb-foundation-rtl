@@ -10,8 +10,8 @@ SOURCE_DIR = os.path.join(ROOT_DIR)
 
 setup(
     name="static-foundation",
-    version="6.5.0-rc.3",
-    description="Django Zurb Foundation package",
+    version="6.5.0rc3.post1",
+    description="Django Zurb Foundation + Motion-UI package",
     long_description=open('Readme.md').read(),
     author="w.tayyeb",
     author_email="w.tayyeb@gmail.com",

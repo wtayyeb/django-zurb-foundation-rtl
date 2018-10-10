@@ -1,3 +1,6 @@
 [submodule "zurb-foundation-sites"]
 	path = zurb-foundation-sites
 	url = https://github.com/zurb/foundation-sites.git
+[submodule "zurb-motion-ui"]
+	path = zurb-motion-ui
+	url = https://github.com/zurb/motion-ui.git

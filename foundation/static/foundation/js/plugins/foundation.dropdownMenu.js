@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.core"), require("./foundation.core.plugin"), require("./foundation.core.utils"), require("./foundation.util.box"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("jquery"));
+		module.exports = factory(require("./foundation.core.plugin"), require("./foundation.core"), require("jquery"), require("./foundation.core.utils"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("./foundation.util.box"), require("./foundation.util.touch"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.core", "./foundation.core.plugin", "./foundation.core.utils", "./foundation.util.box", "./foundation.util.keyboard", "./foundation.util.nest", "jquery"], factory);
+		define(["./foundation.core.plugin", "./foundation.core", "jquery", "./foundation.core.utils", "./foundation.util.keyboard", "./foundation.util.nest", "./foundation.util.box", "./foundation.util.touch"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.dropdownMenu"] = factory(require("./foundation.core"), require("./foundation.core.plugin"), require("./foundation.core.utils"), require("./foundation.util.box"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("jquery"));
+		exports["foundation.dropdownMenu"] = factory(require("./foundation.core.plugin"), require("./foundation.core"), require("jquery"), require("./foundation.core.utils"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("./foundation.util.box"), require("./foundation.util.touch"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.dropdownMenu"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.box"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.nest"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_core_plugin__, __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__, __WEBPACK_EXTERNAL_MODULE__foundation_util_box__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.dropdownMenu"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.nest"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.box"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.touch"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core_plugin__, __WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__, __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__, __WEBPACK_EXTERNAL_MODULE__foundation_util_box__, __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -162,6 +162,17 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__;
 
 /***/ }),
 
+/***/ "./foundation.util.touch":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.touch"],"amd":"./foundation.util.touch","commonjs":"./foundation.util.touch","commonjs2":"./foundation.util.touch"} ***!
+  \****************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__;
+
+/***/ }),
+
 /***/ "./js/entries/plugins/foundation.dropdownMenu.js":
 /*!*******************************************************!*\
   !*** ./js/entries/plugins/foundation.dropdownMenu.js ***!
@@ -197,16 +208,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownMenu", function() { return DropdownMenu; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.nest */ "./foundation.util.nest");
-/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
-/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_box__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.nest */ "./foundation.util.nest");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_box__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.util.touch */ "./foundation.util.touch");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -233,12 +246,14 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 /**
  * DropdownMenu module.
- * @module foundation.dropdown-menu
+ * @module foundation.dropdownMenu
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
  * @requires foundation.util.nest
+ * @requires foundation.util.touch
  */
 
 var DropdownMenu =
@@ -268,9 +283,11 @@ function (_Plugin) {
       this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
 
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
+
       this._init();
 
-      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('DropdownMenu', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].register('DropdownMenu', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -289,7 +306,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Feather(this.$element, 'dropdown');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__["Nest"].Feather(this.$element, 'dropdown');
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
       this.$menuItems = this.$element.find('[role="menuitem"]');
@@ -297,7 +314,7 @@ function (_Plugin) {
       this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
       if (this.options.alignment === 'auto') {
-        if (this.$element.hasClass(this.options.rightClass) || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_4__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
+        if (this.$element.hasClass(this.options.rightClass) || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
           this.options.alignment = 'right';
           subs.addClass('opens-left');
         } else {
@@ -324,7 +341,7 @@ function (_Plugin) {
   }, {
     key: "_isRtl",
     value: function _isRtl() {
-      return this.$element.hasClass('align-right') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_4__["rtl"])() && !this.$element.hasClass('align-left');
+      return this.$element.hasClass('align-right') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() && !this.$element.hasClass('align-left');
     }
     /**
      * Adds event listeners to elements within the menu
@@ -350,15 +367,13 @@ function (_Plugin) {
           if (hasClicked) {
             if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
               return;
-            } else {
-              e.stopImmediatePropagation();
-              e.preventDefault();
-
-              _this._hide($elem);
             }
+
+            e.preventDefault();
+
+            _this._hide($elem);
           } else {
             e.preventDefault();
-            e.stopImmediatePropagation();
 
             _this._show($sub);
 
@@ -368,12 +383,12 @@ function (_Plugin) {
       };
 
       if (this.options.clickOpen || hasTouch) {
-        this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+        this.$menuItems.on('click.zf.dropdownMenu touchstart.zf.dropdownMenu', handleClickFn);
       } // Handle Leaf element Clicks
 
 
       if (_this.options.closeOnClickInside) {
-        this.$menuItems.on('click.zf.dropdownmenu', function (e) {
+        this.$menuItems.on('click.zf.dropdownMenu', function (e) {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -384,7 +399,7 @@ function (_Plugin) {
       }
 
       if (!this.options.disableHover) {
-        this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
+        this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -394,7 +409,7 @@ function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownmenu', function (e) {
+        }).on('mouseleave.zf.dropdownMenu', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["ignoreMousedisappear"])(function (e) {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -405,23 +420,13 @@ function (_Plugin) {
 
             clearTimeout($elem.data('_delay'));
             $elem.data('_delay', setTimeout(function () {
-              // Ignore "magic mouseleave": when the mouse simply disapear from the document
-              // (like when entering in browser input suggestions See https://git.io/zf-11410),
-              // unless we actually left the window (and document lost focus).
-              //
-              // In firefox, document will not focus at the time the event is triggered, so we have
-              // to make this test after the delay.
-              if (e.relatedTarget === null && document.hasFocus && document.hasFocus()) {
-                return false;
-              }
-
               _this._hide($elem);
             }, _this.options.closingTime));
           }
-        });
+        }));
       }
 
-      this.$menuItems.on('keydown.zf.dropdownmenu', function (e) {
+      this.$menuItems.on('keydown.zf.dropdownMenu', function (e) {
         var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', '[role="menuitem"]'),
             isTab = _this.$tabs.index($element) > -1,
             $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
@@ -474,9 +479,6 @@ function (_Plugin) {
 
 
             e.preventDefault();
-          },
-          handled: function handled() {
-            e.stopImmediatePropagation();
           }
         };
 
@@ -541,7 +543,7 @@ function (_Plugin) {
           }
         }
 
-        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'DropdownMenu', functions);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].handleKey(e, 'DropdownMenu', functions);
       });
     }
     /**
@@ -553,20 +555,31 @@ function (_Plugin) {
   }, {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
-      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body),
-          _this = this;
+      var _this2 = this;
 
-      $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu').on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function (e) {
-        var $link = _this.$element.find(e.target);
+      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body);
 
-        if ($link.length) {
-          return;
-        }
+      this._removeBodyHandler();
 
-        _this._hide();
+      $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', function (e) {
+        var isItself = !!jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest(_this2.$element).length;
+        if (isItself) return;
 
-        $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
+        _this2._hide();
+
+        _this2._removeBodyHandler();
       });
+    }
+    /**
+     * Remove the body event handler. See `_addBodyHandler`.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_removeBodyHandler",
+    value: function _removeBodyHandler() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
     }
     /**
      * Opens a dropdown pane, and checks for collisions first.
@@ -587,13 +600,13 @@ function (_Plugin) {
       this._hide($sibs, idx);
 
       $sub.css('visibility', 'hidden').addClass('js-dropdown-active').parent('li.is-dropdown-submenu-parent').addClass('is-active');
-      var clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_3__["Box"].ImNotTouchingYou($sub, null, true);
+      var clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__["Box"].ImNotTouchingYou($sub, null, true);
 
       if (!clear) {
         var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
             $parentLi = $sub.parent('.is-dropdown-submenu-parent');
         $parentLi.removeClass("opens".concat(oldClass)).addClass("opens-".concat(this.options.alignment));
-        clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_3__["Box"].ImNotTouchingYou($sub, null, true);
+        clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__["Box"].ImNotTouchingYou($sub, null, true);
 
         if (!clear) {
           $parentLi.removeClass("opens-".concat(this.options.alignment)).addClass('opens-inner');
@@ -609,17 +622,18 @@ function (_Plugin) {
       }
       /**
        * Fires when the new dropdown pane is visible.
-       * @event Dropdownmenu#show
+       * @event DropdownMenu#show
        */
 
 
-      this.$element.trigger('show.zf.dropdownmenu', [$sub]);
+      this.$element.trigger('show.zf.dropdownMenu', [$sub]);
     }
     /**
      * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
      * @function
      * @param {jQuery} $elem - element with a submenu to hide
      * @param {Number} idx - index of the $tabs collection to hide
+     * @fires DropdownMenu#hide
      * @private
      */
 
@@ -641,7 +655,8 @@ function (_Plugin) {
       var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
 
       if (somethingToClose) {
-        $toClose.find('li.is-active').add($toClose).attr({
+        var $activeItem = $toClose.find('li.is-active');
+        $activeItem.add($toClose).attr({
           'data-is-click': false
         }).removeClass('is-active');
         $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
@@ -651,13 +666,17 @@ function (_Plugin) {
           $toClose.find('li.is-dropdown-submenu-parent').add($toClose).removeClass("opens-inner opens-".concat(this.options.alignment)).addClass("opens-".concat(oldClass));
           this.changed = false;
         }
+
+        clearTimeout($activeItem.data('_delay'));
+
+        this._removeBodyHandler();
         /**
          * Fires when the open menus are closed.
-         * @event Dropdownmenu#hide
+         * @event DropdownMenu#hide
          */
 
 
-        this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
+        this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
       }
     }
     /**
@@ -668,14 +687,14 @@ function (_Plugin) {
   }, {
     key: "_destroy",
     value: function _destroy() {
-      this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click').removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('.zf.dropdownmenu');
-      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Burn(this.$element, 'dropdown');
+      this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click').removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('.zf.dropdownMenu');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__["Nest"].Burn(this.$element, 'dropdown');
     }
   }]);
 
   return DropdownMenu;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__["Plugin"]);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 /**
  * Default settings for plugin
  */

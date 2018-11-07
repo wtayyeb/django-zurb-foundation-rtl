@@ -175,12 +175,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return Accordion; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -240,7 +240,7 @@ function (_Plugin) {
 
       this._init();
 
-      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Accordion', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].register('Accordion', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ARROW_DOWN': 'next',
@@ -257,12 +257,13 @@ function (_Plugin) {
     value: function _init() {
       var _this2 = this;
 
+      this._isInitializing = true;
       this.$element.attr('role', 'tablist');
       this.$tabs = this.$element.children('[data-accordion-item]');
       this.$tabs.each(function (idx, el) {
         var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el),
             $content = $el.children('[data-tab-content]'),
-            id = $content[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'accordion'),
+            id = $content[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'accordion'),
             linkId = el.id ? "".concat(el.id, "-label") : "".concat(id, "-label");
         $el.find('a:first').attr({
           'aria-controls': id,
@@ -288,16 +289,21 @@ function (_Plugin) {
       }
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
+        var anchor = window.location.hash;
 
-        if (!anchor.length && _this2._initialAnchor) {
-          anchor = _this2._initialAnchor;
+        if (!anchor.length) {
+          // If we are still initializing and there is no anchor, then there is nothing to do
+          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
+
+          if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
 
         var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // If there is an anchor for the hash, open it (if not already active)
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // Whether the anchor element that has been found is part of this element
 
+
+        var isOwnAnchor = !!($anchor.length && $link.length); // If there is an anchor for the hash, open it (if not already active)
 
         if ($anchor && $link && $link.length) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
@@ -308,24 +314,25 @@ function (_Plugin) {
         } // Otherwise, close everything
         else {
             _this2._closeAllTabs();
-          } // Roll up a little to show the titles
+          }
 
+        if (isOwnAnchor) {
+          // Roll up a little to show the titles
+          if (_this2.options.deepLinkSmudge) {
+            Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+              var offset = _this2.$element.offset();
 
-        if (_this2.options.deepLinkSmudge) {
-          Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
-            var offset = _this2.$element.offset();
-
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-              scrollTop: offset.top
-            }, _this2.options.deepLinkSmudgeDelay);
-          });
-        }
-
-        if ($anchor && $link) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+                scrollTop: offset.top
+              }, _this2.options.deepLinkSmudgeDelay);
+            });
+          }
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Accordion#deeplink
            */
+
+
           _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
@@ -336,6 +343,8 @@ function (_Plugin) {
       }
 
       this._events();
+
+      this._isInitializing = false;
     }
     /**
      * Adds event handlers for items within the accordion.
@@ -357,7 +366,7 @@ function (_Plugin) {
 
             _this.toggle($tabContent);
           }).on('keydown.zf.accordion', function (e) {
-            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Accordion', {
+            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].handleKey(e, 'Accordion', {
               toggle: function toggle() {
                 _this.toggle($tabContent);
               },
@@ -377,7 +386,6 @@ function (_Plugin) {
               },
               handled: function handled() {
                 e.preventDefault();
-                e.stopPropagation();
               }
             });
           });
@@ -575,7 +583,7 @@ function (_Plugin) {
   }]);
 
   return Accordion;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 
 Accordion.defaults = {
   /**

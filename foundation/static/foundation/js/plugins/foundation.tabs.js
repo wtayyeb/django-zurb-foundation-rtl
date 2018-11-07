@@ -186,14 +186,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return Tabs; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
-/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -255,7 +255,7 @@ function (_Plugin) {
 
       this._init();
 
-      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Tabs', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].register('Tabs', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -278,6 +278,7 @@ function (_Plugin) {
 
       var _this = this;
 
+      this._isInitializing = true;
       this.$element.attr({
         'role': 'tablist'
       });
@@ -314,7 +315,7 @@ function (_Plugin) {
         }
 
         if (isActive && _this.options.autoFocus) {
-          _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+          _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
               scrollTop: $elem.offset().top
             }, _this.options.deepLinkSmudgeDelay, function () {
@@ -328,7 +329,7 @@ function (_Plugin) {
         var $images = this.$tabContent.find('img');
 
         if ($images.length) {
-          Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__["onImagesLoaded"])($images, this._setHeight.bind(this));
+          Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__["onImagesLoaded"])($images, this._setHeight.bind(this));
         } else {
           this._setHeight();
         }
@@ -336,38 +337,45 @@ function (_Plugin) {
 
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
+        var anchor = window.location.hash;
 
-        if (!anchor.length && _this2._initialAnchor) {
-          anchor = _this2._initialAnchor;
+        if (!anchor.length) {
+          // If we are still initializing and there is no anchor, then there is nothing to do
+          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
+
+          if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
 
-        var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
+        var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
+        var $anchor = anchorNoHash && jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(anchorNoHash));
 
-        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // If there is an anchor for the hash, select it
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"],[data-tabs-target=\"").concat(anchorNoHash, "\"]")).first(); // Whether the anchor element that has been found is part of this element
 
+
+        var isOwnAnchor = !!($anchor.length && $link.length); // If there is an anchor for the hash, select it
 
         if ($anchor && $anchor.length && $link && $link.length) {
           _this2.selectTab($anchor, true);
         } // Otherwise, collapse everything
         else {
             _this2._collapse();
-          } // Roll up a little to show the titles
+          }
 
+        if (isOwnAnchor) {
+          // Roll up a little to show the titles
+          if (_this2.options.deepLinkSmudge) {
+            var offset = _this2.$element.offset();
 
-        if (_this2.options.deepLinkSmudge) {
-          var offset = _this2.$element.offset();
-
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-            scrollTop: offset.top
-          }, _this2.options.deepLinkSmudgeDelay);
-        }
-
-        if ($anchor && $link) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+              scrollTop: offset.top
+            }, _this2.options.deepLinkSmudgeDelay);
+          }
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Tabs#deeplink
            */
+
+
           _this2.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
@@ -378,6 +386,8 @@ function (_Plugin) {
       }
 
       this._events();
+
+      this._isInitializing = false;
     }
     /**
      * Adds event handlers for items within the tabs.
@@ -414,7 +424,6 @@ function (_Plugin) {
 
       this.$element.off('click.zf.tabs').on('click.zf.tabs', ".".concat(this.options.linkClass), function (e) {
         e.preventDefault();
-        e.stopPropagation();
 
         _this._handleTabChange(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
       });
@@ -449,7 +458,7 @@ function (_Plugin) {
           }
         }); // handle keyboard event with keyboard util
 
-        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Tabs', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].handleKey(e, 'Tabs', {
           open: function open() {
             $element.find('[role="tab"]').focus();
 
@@ -466,7 +475,6 @@ function (_Plugin) {
             _this._handleTabChange($nextElement);
           },
           handled: function handled() {
-            e.stopPropagation();
             e.preventDefault();
           }
         });
@@ -494,8 +502,9 @@ function (_Plugin) {
 
       var $oldTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass)),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
-          $targetContent = this.$tabContent.find("#".concat(hash)); //close old tab
+          target = $tabLink.attr('data-tabs-target'),
+          anchor = target && target.length ? "#".concat(target) : $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(anchor); //close old tab
 
       this._collapseTab($oldTab); //open new tab
 
@@ -505,9 +514,9 @@ function (_Plugin) {
 
       if (this.options.deepLink && !historyHandled) {
         if (this.options.updateHistory) {
-          history.pushState({}, '', hash);
+          history.pushState({}, '', anchor);
         } else {
-          history.replaceState({}, '', hash);
+          history.replaceState({}, '', anchor);
         }
       }
       /**
@@ -588,7 +597,7 @@ function (_Plugin) {
   }, {
     key: "selectTab",
     value: function selectTab(elem, historyHandled) {
-      var idStr;
+      var idStr, hashIdStr;
 
       if (_typeof(elem) === 'object') {
         idStr = elem[0].id;
@@ -597,10 +606,13 @@ function (_Plugin) {
       }
 
       if (idStr.indexOf('#') < 0) {
-        idStr = "#".concat(idStr);
+        hashIdStr = "#".concat(idStr);
+      } else {
+        hashIdStr = idStr;
+        idStr = idStr.slice(1);
       }
 
-      var $target = this.$tabTitles.has("[href$=\"".concat(idStr, "\"]"));
+      var $target = this.$tabTitles.has("[href$=\"".concat(hashIdStr, "\"],[data-tabs-target=\"").concat(idStr, "\"]")).first();
 
       this._handleTabChange($target, historyHandled);
     }
@@ -670,7 +682,7 @@ function (_Plugin) {
   }]);
 
   return Tabs;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 
 Tabs.defaults = {
   /**
